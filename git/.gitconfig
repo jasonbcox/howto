@@ -1,0 +1,31 @@
+[include]
+  name = ""YOUR NAME HERE"            # Put your name here and remove the broken quotes.  If you don't follow these instructions, your config will be broken.
+  email = ""yourEmail@yourDomain.com"   # Put your email here and remove the broken quotes.  If you don't follow these instructions, your config will be broken.
+
+[core]
+  editor = vim
+
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+
+[push]
+  default = simple
+
+[alias]
+  s = status
+
+  # Pretty, concise version of 'git log'
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+  # Pretty, tree version of 'git log' that shows all branches and stashes
+  lg-all = "!f(){ git lg --decorate --all ;};f"
+
+  pl = pull --rebase
+  bl = branch -al # List all branches (remotes included)
+  ch = checkout
+
+  sl = stash list
+  ss  = "!sh -c 'git stash show -p stash@{$1}' -" # Show the diff for the given stash number

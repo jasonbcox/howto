@@ -1,0 +1,21 @@
+function parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+if [[ $- == *i* ]]; then
+  t_black=$(tput setaf 0)
+  t_red=$(tput setaf 1)
+  t_green=$(tput setaf 2)
+  t_yellow=$(tput setaf 3)
+  t_blue=$(tput setaf 4)
+  t_purple=$(tput setaf 5)
+  t_cyan=$(tput setaf 6)
+  t_white=$(tput setaf 7)
+  t_bold=$(tput bold)
+  t_reset=$(tput sgr0)
+  t_underline=$(tput sgr 0 1)
+
+  \\[$t_green\]\$(parse_git_branch)\[$t_red\]$ \[$t_reset\]  # Add this to the end of your PS1
+  # Example (just copy this if you don't have one):
+  # export PS1="\[$t_bold\]\[$t_yellow\]\u@\h\[$t_red\]\w\\[$t_green\]\$(parse_git_branch)\[$t_red\]$ \[$t_reset\]"
+fi
