@@ -21,9 +21,9 @@ These methods may not apply for everyone.
 
 ## Step 0: Setup Your .gitconfig and .bash_profile <a id="step0"></a>
 Your global .gitconfig houses all of your own settings for all git repositories on your machine.
-This project contains a template you can build on that provides some nice features that don't ship with git alone (see .gitconfig above)
+This project contains a template you can build on that provides some nice features that don't ship with git alone (see *.gitconfig* above)
 
-In your .bash_profile, you can append the current branch to your PS1 with the example found in this project (see .bash_profile.partial above)
+In your .bash_profile, you can append the current branch to your PS1 with the example found in this project (see *.bash_profile.partial* above)
 
 
 ## Step 1: Create or Clone a Repository <a id="step1"></a>
@@ -68,7 +68,9 @@ git reset <file>   # Unstage a single file
 ```
 
 1. Commit your changes to your **local** repository.  If you're unfamiliar with how git works, keep in mind that you have a full repository on your local box.  When you do 'git commit' you are not making a commit like you would with 'svn commit' (where your changes get pushed to the central repository).  Your changes are simply tracked on your local repository.
-`git commit -m "Your commit message"`
+```
+git commit -m "Your commit message"
+```
 
 1. What's really nice about having a local repository is that you can commit as often as you like.  It's generally recommended to commit as often as you can so that you can revert to older local states, if need be.
 However, if you're working in a team, you don't want to clutter your team's git history with commit messages like the following:
@@ -90,8 +92,8 @@ Where X is the number of commits to squash from HEAD.  Say you committed 3 times
     <td>Would be changed to this:</td>
   </tr>
   <tr>
-    <td>`$ git rebase -i HEAD~4`</td>
-    <td>`$ git rebase -i HEAD~4`</td>
+    <td><pre>$ git rebase -i HEAD~4</pre></td>
+    <td><pre>$ git rebase -i HEAD~4</pre></td>
   </tr>
   <tr>
     <td>
@@ -148,7 +150,7 @@ Stash your changes
 
 Retrieve your changes later
 ```
-git stash list    # find the stash number for your changes
+git stash list               # find the stash number for your changes
 git stash apply stash@{X}    # where X is the stash number
 ```
 Delete your old stash later `git stash drop stash@{X}`
@@ -161,7 +163,10 @@ If you're working on multiple bugs/features at the same time, consider branching
 Any branch you create will remain on your local box, so don't worry about creating clutter for your team.
 If you want to save a branch externally or share your local branch, you can push it upstream (just like you do with master).
 For more info on remote branching, see the next section: Guide to Branching (Remotely).
-Create a new local branch: `git checkout -b branchName`
+Create a new local branch:
+```
+git checkout -b branchName
+```
 
 **Note: If you want to branch from a particular commit, find its hash in the git logs and branch as such where ###### is the commit hash:**
 `git checkout -b branchName ######`
@@ -191,7 +196,9 @@ git branch -d branchName # delete this topic branch after merging into master (t
 
 If you're working on a feature with your coworkers, but don't want to interfere with work on the master branch, create another upstream branch for your group to work on!
 Create a new local branch (see above for details):
-`git checkout -b branchName`
+```
+git checkout -b branchName
+```
 
 Push the branch upstream so your coworkers can begin working on it:
 `git push -u origin branchName`
@@ -266,21 +273,21 @@ git checkout newBranchName
 
 Differences between deleting branches
   * Delete a local branch cautiously (it will notify you if your changes haven't been pushed upstream):
-  `git branch -d <branchname>`
+  ```git branch -d <branchname>```
 
   * Forcefully delete a local branch.  If you have squashed your changes and then pushed them upstream, -d may through an error (CAREFUL! Make sure you actually want to delete the branch! There is no prompt!):
-  `git branch -D <branchname>`
+  ```git branch -D <branchname>```
 
   * Delete the branch remotely (requires permissions):
-  `git push origin --delete <branchname>`
+  ```git push origin --delete <branchname>```
 
 Applying a patch.
   * If you're using IntelliJ, the easiest way to apply this is to use VCS -> Apply Patch.  For command line users:
-  `patch -p1 < filename.patch`
+  ```patch -p1 < filename.patch```
 
   * If the above doesn't work, try this (the p level depends on the patch format):
-  `patch -p0 < filename.patch`
+  ```patch -p0 < filename.patch```
 
-Immediately apply diff as a patch
-`git diff <commit-from> <commit-to> | git apply`
+Immediately apply diff as a patch:
+```git diff <commit-from> <commit-to> | git apply```
 
