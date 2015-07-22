@@ -98,18 +98,18 @@ Where X is the number of commits to squash from HEAD.  Say you committed 3 times
   <tr>
     <td>
       <pre>
-        pick 01d1124 Adding license
-        pick 6340aaa Moving license into its own file
-        pick ebfd367 Jekyll has become self-aware.
-        pick 30e0ccb Changed the tagline in the binary, too.
+      pick 01d1124 Adding license
+      pick 6340aaa Moving license into its own file
+      pick ebfd367 Jekyll has become self-aware.
+      pick 30e0ccb Changed the tagline in the binary, too.
       </pre>
     </td>
     <td>
       <pre>
-        pick 01d1124 Adding license
-        squash 6340aaa Moving license into its own file
-        squash ebfd367 Jekyll has become self-aware.
-        squash 30e0ccb Changed the tagline in the binary, too.
+      pick 01d1124 Adding license
+      squash 6340aaa Moving license into its own file
+      squash ebfd367 Jekyll has become self-aware.
+      squash 30e0ccb Changed the tagline in the binary, too.
       </pre>
     </td>
   </tr>
@@ -273,21 +273,33 @@ git checkout newBranchName
 
 Differences between deleting branches
   * Delete a local branch cautiously (it will notify you if your changes haven't been pushed upstream):
-  ```git branch -d <branchname>```
+  ```
+  git branch -d <branchname>
+  ```
 
   * Forcefully delete a local branch.  If you have squashed your changes and then pushed them upstream, -d may through an error (CAREFUL! Make sure you actually want to delete the branch! There is no prompt!):
-  ```git branch -D <branchname>```
+  ```
+  git branch -D <branchname>
+  ```
 
   * Delete the branch remotely (requires permissions):
-  ```git push origin --delete <branchname>```
+  ```
+  git push origin --delete <branchname>
+  ```
 
 Applying a patch.
   * If you're using IntelliJ, the easiest way to apply this is to use VCS -> Apply Patch.  For command line users:
-  ```patch -p1 < filename.patch```
+  ```
+  patch -p1 < filename.patch
+  ```
 
   * If the above doesn't work, try this (the p level depends on the patch format):
-  ```patch -p0 < filename.patch```
+  ```
+  patch -p0 < filename.patch
+  ```
 
 Immediately apply diff as a patch:
-```git diff <commit-from> <commit-to> | git apply```
+```
+git diff <commit-from> <commit-to> | git apply
+```
 
