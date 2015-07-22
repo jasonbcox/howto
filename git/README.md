@@ -98,18 +98,18 @@ Where X is the number of commits to squash from HEAD.  Say you committed 3 times
   <tr>
     <td>
       <pre>
-      pick 01d1124 Adding license
-      pick 6340aaa Moving license into its own file
-      pick ebfd367 Jekyll has become self-aware.
-      pick 30e0ccb Changed the tagline in the binary, too.
+pick 01d1124 Adding license
+pick 6340aaa Moving license into its own file
+pick ebfd367 Jekyll has become self-aware.
+pick 30e0ccb Changed the tagline in the binary, too.
       </pre>
     </td>
     <td>
       <pre>
-      pick 01d1124 Adding license
-      squash 6340aaa Moving license into its own file
-      squash ebfd367 Jekyll has become self-aware.
-      squash 30e0ccb Changed the tagline in the binary, too.
+pick 01d1124 Adding license
+squash 6340aaa Moving license into its own file
+squash ebfd367 Jekyll has become self-aware.
+squash 30e0ccb Changed the tagline in the binary, too.
       </pre>
     </td>
   </tr>
