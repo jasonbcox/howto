@@ -67,12 +67,12 @@ git reset          # This will undo all of your staged changes.  Don't worry, yo
 git reset <file>   # Unstage a single file
 ```
 
-1. Commit your changes to your **local** repository.  If you're unfamiliar with how git works, keep in mind that you have a full repository on your local box.  When you do 'git commit' you are not making a commit like you would with 'svn commit' (where your changes get pushed to the central repository).  Your changes are simply tracked on your local repository.
+2. Commit your changes to your **local** repository.  If you're unfamiliar with how git works, keep in mind that you have a full repository on your local box.  When you do 'git commit' you are not making a commit like you would with 'svn commit' (where your changes get pushed to the central repository).  Your changes are simply tracked on your local repository.
 ```
 git commit -m "Your commit message"
 ```
 
-1. What's really nice about having a local repository is that you can commit as often as you like.  It's generally recommended to commit as often as you can so that you can revert to older local states, if need be.
+3. What's really nice about having a local repository is that you can commit as often as you like.  It's generally recommended to commit as often as you can so that you can revert to older local states, if need be.
 However, if you're working in a team, you don't want to clutter your team's git history with commit messages like the following:
 ```
 * 123456 - Fixed the bug for real this time (1 hour ago) <Jason B. Cox>
@@ -117,7 +117,7 @@ squash 30e0ccb Changed the tagline in the binary, too.
 
 **Look at this quick tutorial on git sqashing:** <a href="http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html">http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html</a> **(No, seriously, read it.  99% of your squashing problems can be fixed by reading this!)**
 
-1. Push your changes:
+4. Push your changes:
 `git push`
 
 
@@ -224,7 +224,7 @@ There are different ways to revert different types of changes.  Listed below are
 You could end up breaking your master branch and your neighboring engineers will hate you.
 YOU HAVE BEEN WARNED.
 
-Undo local commits, but keep the changes as unstaged changes:
+1. Undo local commits, but keep the changes as unstaged changes:
 ```
 # Undo the latest commit
 git reset --soft HEAD~1
@@ -232,8 +232,14 @@ git reset --soft HEAD~1
 # Undo all of your local commits
 git reset --soft origin/HEAD..HEAD
 ```
+Once you have done a reset soft on local commits, you can remove files from staging (without reverting the changes) by doing the following:
+```
+git reset <path/to/the/file>
+```
+Doing a plain git reset is useful when you want to remove an accidentally added a file and committed it along with other changes.
 
-Revert a single file (your changes will be lost):
+
+2. Revert a single file (your changes will be lost):
 ```
 # Revert the file to latest:
 git checkout origin/HEAD <filename>
@@ -242,13 +248,13 @@ git checkout origin/HEAD <filename>
 git checkout <commit hash> <filename>
 ```
 
-Revert uncommitted changes (locally committed changes will be intact):
+3. Revert uncommitted changes (locally committed changes will be intact):
 `git reset --hard HEAD`
 
-Revert locally committed changes (your committed changes will be lost):
+4. Revert locally committed changes (your committed changes will be lost):
 `git reset --hard origin/HEAD`
 
-Revert changes that have already been pushed upstream (note: this creates a set of reverse commits that undo the changes applied by previous commits.  Use with caution):
+5. Revert changes that have already been pushed upstream (note: this creates a set of reverse commits that undo the changes applied by previous commits.  Use with caution):
 ```
 git revert <oldest commit to revert>..<latest commit to revert>
 # Don't forget the two dots         ^
