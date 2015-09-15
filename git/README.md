@@ -54,71 +54,71 @@ Note that some teams may choose to use merging over rebasing.  This is fine as l
 ## Guide to Pushing Changes <a id="guide-push"></a>
 
 1. Make your changes, then add them to git's tracking to be committed.  There are a number of ways to add files, some of which are listed here:
-```
-git add file/to/add    # add a single file
-git add -u             # add all modified and deleted files
-git add .              # add all new and modified files
-git add -A             # git add .; git add -u
-```
+  ```
+  git add file/to/add    # add a single file
+  git add -u             # add all modified and deleted files
+  git add .              # add all new and modified files
+  git add -A             # git add .; git add -u
+  ```
 
   * Make sure to check what files you added with 'git status'.  Did you accidentally add a bunch of files that you didn't mean to? Try these:
-```
-git reset          # This will undo all of your staged changes.  Don't worry, your changes won't be reverted
-git reset <file>   # Unstage a single file
-```
+  ```
+  git reset          # This will undo all of your staged changes.  Don't worry, your changes won't be reverted
+  git reset <file>   # Unstage a single file
+  ```
 
-2. Commit your changes to your **local** repository.  If you're unfamiliar with how git works, keep in mind that you have a full repository on your local box.  When you do 'git commit' you are not making a commit like you would with 'svn commit' (where your changes get pushed to the central repository).  Your changes are simply tracked on your local repository.
-```
-git commit -m "Your commit message"
-```
+1. Commit your changes to your **local** repository.  If you're unfamiliar with how git works, keep in mind that you have a full repository on your local box.  When you do 'git commit' you are not making a commit like you would with 'svn commit' (where your changes get pushed to the central repository).  Your changes are simply tracked on your local repository.
+  ```
+  git commit -m "Your commit message"
+  ```
 
-3. What's really nice about having a local repository is that you can commit as often as you like.  It's generally recommended to commit as often as you can so that you can revert to older local states, if need be.
-However, if you're working in a team, you don't want to clutter your team's git history with commit messages like the following:
-```
-* 123456 - Fixed the bug for real this time (1 hour ago) <Jason B. Cox>
-* 789012 - Fixed a bug (6 hours ago) <Jason B. Cox>
-* 123456 - First half of the feature (2 days ago) <Jason B. Cox>
-```
+1. What's really nice about having a local repository is that you can commit as often as you like.  It's generally recommended to commit as often as you can so that you can revert to older local states, if need be.
+  However, if you're working in a team, you don't want to clutter your team's git history with commit messages like the following:
+  ```
+  * 123456 - Fixed the bug for real this time (1 hour ago) <Jason B. Cox>
+  * 789012 - Fixed a bug (6 hours ago) <Jason B. Cox>
+  * 123456 - First half of the feature (2 days ago) <Jason B. Cox>
+  ```
 
-So before you push your changes upstream, be sure to squash your commits:
-`git rebase -i HEAD~X`
-Where X is the number of commits to squash from HEAD.  Say you committed 3 times and want to squash those 3 commits into one: git rebase -i HEAD~3.
+  So before you push your changes upstream, be sure to squash your commits:
+  `git rebase -i HEAD~X`
+  Where X is the number of commits to squash from HEAD.  Say you committed 3 times and want to squash those 3 commits into one: git rebase -i HEAD~3.
 
-*When you run this command, you must enter the commits to squash.
+  *When you run this command, you must enter the commits to squash.
 
-<table>
-  <tr>
-    <td>For example this:</td>
-    <td>Would be changed to this:</td>
-  </tr>
-  <tr>
-    <td><pre>$ git rebase -i HEAD~4</pre></td>
-    <td><pre>$ git rebase -i HEAD~4</pre></td>
-  </tr>
-  <tr>
-    <td>
-      <pre>
-pick 01d1124 Adding license
-pick 6340aaa Moving license into its own file
-pick ebfd367 Jekyll has become self-aware.
-pick 30e0ccb Changed the tagline in the binary, too.
-      </pre>
-    </td>
-    <td>
-      <pre>
-pick 01d1124 Adding license
-squash 6340aaa Moving license into its own file
-squash ebfd367 Jekyll has become self-aware.
-squash 30e0ccb Changed the tagline in the binary, too.
-      </pre>
-    </td>
-  </tr>
-</table>
+  <table>
+    <tr>
+      <td>For example this:</td>
+      <td>Would be changed to this:</td>
+    </tr>
+    <tr>
+      <td><pre>$ git rebase -i HEAD~4</pre></td>
+      <td><pre>$ git rebase -i HEAD~4</pre></td>
+    </tr>
+    <tr>
+      <td>
+        <pre>
+  pick 01d1124 Adding license
+  pick 6340aaa Moving license into its own file
+  pick ebfd367 Jekyll has become self-aware.
+  pick 30e0ccb Changed the tagline in the binary, too.
+        </pre>
+      </td>
+      <td>
+        <pre>
+  pick 01d1124 Adding license
+  squash 6340aaa Moving license into its own file
+  squash ebfd367 Jekyll has become self-aware.
+  squash 30e0ccb Changed the tagline in the binary, too.
+        </pre>
+      </td>
+    </tr>
+  </table>
 
-**Look at this quick tutorial on git sqashing:** <a href="http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html">http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html</a> **(No, seriously, read it.  99% of your squashing problems can be fixed by reading this!)**
+  **Look at this quick tutorial on git sqashing:** <a href="http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html">http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html</a> **(No, seriously, read it.  99% of your squashing problems can be fixed by reading this!)**
 
-4. Push your changes:
-`git push`
+1. Push your changes:
+  `git push`
 
 
 ## Guide to Git Diff <a id="guide-diff"></a>
@@ -225,40 +225,40 @@ You could end up breaking your master branch and your neighboring engineers will
 YOU HAVE BEEN WARNED.
 
 1. Undo local commits, but keep the changes as unstaged changes:
-```
-# Undo the latest commit
-git reset --soft HEAD~1
+  ```
+  # Undo the latest commit
+  git reset --soft HEAD~1
 
-# Undo all of your local commits
-git reset --soft origin/HEAD..HEAD
-```
-Once you have done a reset soft on local commits, you can remove files from staging (without reverting the changes) by doing the following:
-```
-git reset <path/to/the/file>
-```
-Doing a plain git reset is useful when you want to remove an accidentally added a file and committed it along with other changes.
+  # Undo all of your local commits
+  git reset --soft origin/HEAD..HEAD
+  ```
+  Once you have done a reset soft on local commits, you can remove files from staging (without reverting the changes) by doing the following:
+  ```
+  git reset <path/to/the/file>
+  ```
+  Doing a plain git reset is useful when you want to remove an accidentally added a file and committed it along with other changes.
 
 
-2. Revert a single file (your changes will be lost):
-```
-# Revert the file to latest:
-git checkout origin/HEAD <filename>
+1. Revert a single file (your changes will be lost):
+  ```
+  # Revert the file to latest:
+  git checkout origin/HEAD <filename>
 
-# Revert the file to a specific commit:
-git checkout <commit hash> <filename>
-```
+  # Revert the file to a specific commit:
+  git checkout <commit hash> <filename>
+  ```
 
-3. Revert uncommitted changes (locally committed changes will be intact):
-`git reset --hard HEAD`
+1. Revert uncommitted changes (locally committed changes will be intact):
+  `git reset --hard HEAD`
 
-4. Revert locally committed changes (your committed changes will be lost):
-`git reset --hard origin/HEAD`
+1. Revert locally committed changes (your committed changes will be lost):
+  `git reset --hard origin/HEAD`
 
-5. Revert changes that have already been pushed upstream (note: this creates a set of reverse commits that undo the changes applied by previous commits.  Use with caution):
-```
-git revert <oldest commit to revert>..<latest commit to revert>
-# Don't forget the two dots         ^
-```
+1. Revert changes that have already been pushed upstream (note: this creates a set of reverse commits that undo the changes applied by previous commits.  Use with caution):
+  ```
+  git revert <oldest commit to revert>..<latest commit to revert>
+  # Don't forget the two dots         ^
+  ```
 
 ## Tips/Tricks <a id="tips-tricks"></a>
 
