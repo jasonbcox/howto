@@ -262,7 +262,7 @@ YOU HAVE BEEN WARNED.
 
 ## Tips/Tricks <a id="tips-tricks"></a>
 
-Applying a single commit from one branch onto another
+#### Applying a single commit from one branch onto another
 ```
 git checkout theBranchToApplyTo
 git cherry-pick ######
@@ -277,7 +277,7 @@ git reset --hard HEAD~X    # WARNING: This will obliterate any unstaged changes.
 git checkout newBranchName
 ```
 
-Differences between deleting branches
+#### Differences between deleting branches
   * Delete a local branch cautiously (it will notify you if your changes haven't been pushed upstream):
   ```
   git branch -d <branchname>
@@ -293,7 +293,7 @@ Differences between deleting branches
   git push origin --delete <branchname>
   ```
 
-Applying a patch.
+#### Applying a patch.
   * If you're using IntelliJ, the easiest way to apply this is to use VCS -> Apply Patch.  For command line users:
   ```
   patch -p1 < filename.patch
@@ -304,8 +304,13 @@ Applying a patch.
   patch -p0 < filename.patch
   ```
 
-Immediately apply diff as a patch:
+#### Immediately apply diff as a patch:
 ```
 git diff <commit-from> <commit-to> | git apply
 ```
 
+#### Recover from an accidental branch deletion or reset --hard
+```
+git reflog --relative-date
+```
+You can checkout old states of branches using reflog.
