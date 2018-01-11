@@ -277,6 +277,17 @@ git reset --hard HEAD~X    # WARNING: This will obliterate any unstaged changes.
 git checkout newBranchName
 ```
 
+#### Revert single-line change while keeping the other changes in the same file
+  * Only do this if your change is staged or committed to your local repo.  Do not try this if the change has been pushed upstream or else you'll be rewriting history.
+  ```
+  git reset <filename>
+  ```
+
+  * Add the file back while in patch mode, which allows you to interactively add specific hunks of the patch back into staged changes.
+  ```
+  git add -p <filename>
+  ```
+
 #### Differences between deleting branches
   * Delete a local branch cautiously (it will notify you if your changes haven't been pushed upstream):
   ```
