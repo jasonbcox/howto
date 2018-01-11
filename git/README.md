@@ -67,12 +67,12 @@ Note that some teams may choose to use merging over rebasing.  This is fine as l
   git reset <file>   # Unstage a single file
   ```
 
-1. Commit your changes to your **local** repository.  If you're unfamiliar with how git works, keep in mind that you have a full repository on your local box.  When you do 'git commit' you are not making a commit like you would with 'svn commit' (where your changes get pushed to the central repository).  Your changes are simply tracked on your local repository.
+2. Commit your changes to your **local** repository.  If you're unfamiliar with how git works, keep in mind that you have a full repository on your local box.  When you do 'git commit' you are not making a commit like you would with 'svn commit' (where your changes get pushed to the central repository).  Your changes are simply tracked on your local repository.
   ```
   git commit -m "Your commit message"
   ```
 
-1. What's really nice about having a local repository is that you can commit as often as you like.  It's generally recommended to commit as often as you can so that you can revert to older local states, if need be.
+3. What's really nice about having a local repository is that you can commit as often as you like.  It's generally recommended to commit as often as you can so that you can revert to older local states, if need be.
   However, if you're working in a team, you don't want to clutter your team's git history with commit messages like the following:
   ```
   * 123456 - Fixed the bug for real this time (1 hour ago) <Jason B. Cox>
@@ -117,7 +117,7 @@ Note that some teams may choose to use merging over rebasing.  This is fine as l
 
   **Look at this quick tutorial on git sqashing:** <a href="http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html">http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html</a> **(No, seriously, read it.  99% of your squashing problems can be fixed by reading this!)**
 
-1. Push your changes:
+4. Push your changes:
   `git push`
 
 
@@ -239,7 +239,7 @@ YOU HAVE BEEN WARNED.
   Doing a plain git reset is useful when you want to remove an accidentally added a file and committed it along with other changes.
 
 
-1. Revert a single file (your changes will be lost):
+2. Revert a single file (your changes will be lost):
   ```
   # Revert the file to latest:
   git checkout origin/HEAD <filename>
@@ -248,13 +248,13 @@ YOU HAVE BEEN WARNED.
   git checkout <commit hash> <filename>
   ```
 
-1. Revert uncommitted changes (locally committed changes will be intact):
+3. Revert uncommitted changes (locally committed changes will be intact):
   `git reset --hard HEAD`
 
-1. Revert locally committed changes (your committed changes will be lost):
+4. Revert locally committed changes (your committed changes will be lost):
   `git reset --hard origin/HEAD`
 
-1. Revert changes that have already been pushed upstream (note: this creates a set of reverse commits that undo the changes applied by previous commits.  Use with caution):
+5. Revert changes that have already been pushed upstream (note: this creates a set of reverse commits that undo the changes applied by previous commits.  Use with caution):
   ```
   git revert <oldest commit to revert>..<latest commit to revert>
   # Don't forget the two dots         ^
