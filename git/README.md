@@ -262,6 +262,11 @@ YOU HAVE BEEN WARNED.
 
 ## Tips/Tricks <a id="tips-tricks"></a>
 
+#### Pulling latest master and rebasing the current branch without checking out master
+```
+git pull --rebase origin master:master  # git plom as a shortcut from the provided .gitconfig
+```
+
 #### Applying a single commit from one branch onto another
 ```
 git checkout theBranchToApplyTo

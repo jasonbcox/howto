@@ -24,6 +24,7 @@
   lg-all = "!f(){ git lg --decorate --all ;};f"
 
   pl = pull --rebase
+  plom = pull --rebase origin master:master
   bl = branch -al # List all branches (remotes included)
   ch = checkout
 
